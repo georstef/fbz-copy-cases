@@ -34,7 +34,7 @@ if __name__ == '__main__':
         fbz_from = FogBugz(URL_FROM)
         fbz_from.logon(EMAIL_FROM, PASSWORD_FROM)
         print 'ok'
-    except:
+    except BaseException or Exception:
         print '*** Cannot login to [{0}] ***'.format(URL_FROM)
         print 'copy aborted'
         sys.exit()
@@ -63,17 +63,9 @@ if __name__ == '__main__':
         fbz_to = FogBugz(URL_TO)
         fbz_to.logon(EMAIL_TO, PASSWORD_TO)
         print 'ok'
-    except:
+    except BaseException or Exception:
         print '*** Cannot login to [{0}] ***'.format(URL_TO)
         print 'copy terminated'
-        sys.exit()
-
-
-    try:
-        fbz_to = FogBugz(URL_TO)
-        fbz_to.logon(EMAIL_TO, PASSWORD_TO)
-    except:
-        print '*** Cannot login to [{0}] ***'.format(URL_TO)
         sys.exit()
 
     # when q='' it takes the user's (from) current selected filter in fogbugz.com (and copies only those cases)
